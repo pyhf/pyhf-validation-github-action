@@ -9,24 +9,24 @@ jobs:
     name: A job to say hello
 
     steps:
-    - name: Hello world action step
-      id: hello
       # uses: pyhf/pyhf-validation-github-action@master
-      uses: ./ # Uses an action in the root directory
-      with:
-        who-to-greet: 'Mona the Octocat'
-    # Use the output from the `hello` step
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
-    - name: Install pyhf-validation
-      run: |
-        python -m pip install "git+https://github.com/pyhf/pyhf-validation.git#egg=hfval[complete]"
-    - name: Install pyhf-validation
-      run: |
-        python -m pip install "git+https://github.com/pyhf/pyhf-validation.git#egg=hfval[complete]"
-    - name: Run tests
-      run: |
-        wget https://raw.githubusercontent.com/pyhf/pyhf-validation-root-base/master/tests/rf308_normintegration2d.py
-        wget https://raw.githubusercontent.com/pyhf/pyhf-validation-root-base/master/tests/test_import_ROOT_numpy.py
-        python rf308_normintegration2d.py
-        python test_import_ROOT_numpy.py 
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Hello world action step
+        uses: ./ # Uses an action in the root directory
+        id: hello
+        with:
+          who-to-greet: 'Mona the Octocat'
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - name: Install pyhf-validation
+        run: |
+          python -m pip install "git+https://github.com/pyhf/pyhf-validation.git#egg=hfval[complete]"
+      - name: Run tests
+        run: |
+          wget https://raw.githubusercontent.com/pyhf/pyhf-validation-root-base/master/tests/rf308_normintegration2d.py
+          wget https://raw.githubusercontent.com/pyhf/pyhf-validation-root-base/master/tests/test_import_ROOT_numpy.py
+          python rf308_normintegration2d.py
+          python test_import_ROOT_numpy.py
