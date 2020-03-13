@@ -23,7 +23,11 @@ jobs:
         run: echo "The time was ${{ steps.hello.outputs.time }}"
       - name: Install pyhf-validation
         run: |
+          mkdir code
+          cd code
           python3 -m pip install "git+https://github.com/pyhf/pyhf-validation.git#egg=hfval[complete]"
+          cd ..
+          rm -r code
       - name: Run tests
         run: |
           wget https://raw.githubusercontent.com/pyhf/pyhf-validation-root-base/master/tests/rf308_normintegration2d.py
