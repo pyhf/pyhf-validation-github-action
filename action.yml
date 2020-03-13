@@ -1,0 +1,21 @@
+name: 'pyhf validation'
+branding:
+  icon: 'database'
+  color: 'blue'
+description: 'GitHub Action for using pyhf in validation workflows'
+inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+  pyhf_version:
+    description: 'version of pyhf to install'
+    required: false
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.who-to-greet }}
