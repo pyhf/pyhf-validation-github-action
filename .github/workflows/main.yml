@@ -11,7 +11,8 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: pyhf/pyhf-validation-github-action@feat/add-GitHub-Action
+      # uses: pyhf/pyhf-validation-github-action@master
+      uses: ./ # Uses an action in the root directory
       with:
         who-to-greet: 'Mona the Octocat'
     # Use the output from the `hello` step
