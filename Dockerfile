@@ -11,7 +11,9 @@ LABEL homepage="https://github.com/pyhf/pyhf-validation-github-action"
 
 RUN apt-get -qq -y update && \
     apt-get -qq --no-install-recommends -y install \
-      git && \
+      git \
+      wget \
+      curl && \
     apt-get -y autoclean && \
     apt-get -y autoremove && \
     rm -rf /var/lib/apt-get/lists/* && \
