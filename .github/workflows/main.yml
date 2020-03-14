@@ -27,11 +27,7 @@ jobs:
         run: |
           cat /etc/os-release
           python --version
-          mkdir code
-          cd code
           python -m pip install 'git+https://github.com/pyhf/pyhf-validation.git#egg=hfval[complete]'
-          cd ..
-          rm -r code
       - name: Run tests
         uses: ./ # Uses an action in the root directory
         id: hello
@@ -42,3 +38,11 @@ jobs:
           wget https://raw.githubusercontent.com/pyhf/pyhf-validation-root-base/master/tests/test_import_ROOT_numpy.py
           python rf308_normintegration2d.py
           python test_import_ROOT_numpy.py
+
+  pyhf-validation:
+    runs-on: ubuntu-latest
+    container: 'pyhf/pyhf-validation-root-base:root6.20.00-python3.7'
+    steps:
+    - run: |
+        cat /etc/os-release
+        python --version
