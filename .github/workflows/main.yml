@@ -21,23 +21,23 @@ jobs:
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
-      - name: Install pyhf-validation
-        uses: ./ # Uses an action in the root directory
-        id: hello
-        run: |
-          cat /etc/os-release
-          python --version
-          python -m pip install 'git+https://github.com/pyhf/pyhf-validation.git#egg=hfval[complete]'
-      - name: Run tests
-        uses: ./ # Uses an action in the root directory
-        id: hello
-        run: |
-          cat /etc/os-release
-          python --version
-          wget https://raw.githubusercontent.com/pyhf/pyhf-validation-root-base/master/tests/rf308_normintegration2d.py
-          wget https://raw.githubusercontent.com/pyhf/pyhf-validation-root-base/master/tests/test_import_ROOT_numpy.py
-          python rf308_normintegration2d.py
-          python test_import_ROOT_numpy.py
+      # - name: Install pyhf-validation
+      #   uses: ./ # Uses an action in the root directory
+      #   id: hello
+      #   run: |
+      #     cat /etc/os-release
+      #     python --version
+      #     python -m pip install 'git+https://github.com/pyhf/pyhf-validation.git#egg=hfval[complete]'
+      # - name: Run tests
+      #   uses: ./ # Uses an action in the root directory
+      #   id: hello
+      #   run: |
+      #     cat /etc/os-release
+      #     python --version
+      #     wget https://raw.githubusercontent.com/pyhf/pyhf-validation-root-base/master/tests/rf308_normintegration2d.py
+      #     wget https://raw.githubusercontent.com/pyhf/pyhf-validation-root-base/master/tests/test_import_ROOT_numpy.py
+      #     python rf308_normintegration2d.py
+      #     python test_import_ROOT_numpy.py
 
   pyhf-validation:
     runs-on: ubuntu-latest
