@@ -27,7 +27,7 @@ jobs:
           python --version
           mkdir code
           cd code
-          python -m pip install "git+https://github.com/pyhf/pyhf-validation.git#egg=hfval[complete]"
+          python -m pip install 'git+https://github.com/pyhf/pyhf-validation.git#egg=hfval[complete]'
           cd ..
           rm -r code
       - name: Run tests
